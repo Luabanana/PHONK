@@ -47,24 +47,47 @@
     <div id="flames"></div>
 
     <script>
-        var audio = new Audio('https://www.youtube.com/audiolibrary_download?vid=f3306db6a66dcd37');
+        var player;
         var playButton = document.getElementById('playButton');
         var flames = document.getElementById('flames');
         var isPlaying = false;
 
-        playButton.addEventListener('click', function () {
-            if (!isPlaying) {
-                audio.play();
-                isPlaying = true;
-                playButton.innerHTML = 'Pause';
-                flames.classList.add('playing');
-            } else {
-                audio.pause();
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '0',
+                width: '0',
+                videoId: 'TVtgs_3BcJ0',
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            playButton.addEventListener('click', function () {
+                if (!isPlaying) {
+                    player.playVideo();
+                    isPlaying = true;
+                    playButton.innerHTML = 'Pause';
+                    flames.classList.add('playing');
+                } else {
+                    player.pauseVideo();
+                    isPlaying = false;
+                    playButton.innerHTML = 'Play';
+                    flames.classList.remove('playing');
+                }
+            });
+        }
+
+        function onPlayerStateChange(event) {
+            if (event.data === YT.PlayerState.ENDED) {
                 isPlaying = false;
                 playButton.innerHTML = 'Play';
                 flames.classList.remove('playing');
             }
-        });
+        }
     </script>
+    <script src="https://www.youtube.com/iframe_api"></script>
 </body>
 </html>
