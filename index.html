@@ -4,7 +4,7 @@
     <title>PHONK</title>
     <style>
         body {
-            background-color: #1f1f1f;
+            background-color: #000000;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -12,8 +12,7 @@
             height: 100vh;
             margin: 0;
             color: #ffffff;
-            font-family: 'Courier New', monospace;
-            text-transform: uppercase;
+            font-family: Arial, sans-serif;
         }
 
         h1 {
@@ -55,7 +54,6 @@
             opacity: 1;
         }
     </style>
-    <script src="https://www.youtube.com/iframe_api"></script>
 </head>
 <body>
     <h1>PHONK</h1>
@@ -63,46 +61,24 @@
     <div id="flames"></div>
 
     <script>
-        var player;
+        var audio = new Audio('https://github.com/Luabanana/Music1/raw/main/IMG_2529.mp3');
         var playButton = document.getElementById('playButton');
         var flames = document.getElementById('flames');
         var isPlaying = false;
 
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('player', {
-                height: '0',
-                width: '0',
-                videoId: 'TVtgs_3BcJ0',
-                events: {
-                    'onReady': onPlayerReady,
-                    'onStateChange': onPlayerStateChange
-                }
-            });
-        }
-
-        function onPlayerReady(event) {
-            playButton.addEventListener('click', function () {
-                if (!isPlaying) {
-                    player.playVideo();
-                    isPlaying = true;
-                    playButton.innerHTML = 'Pause';
-                    flames.classList.add('playing');
-                } else {
-                    player.pauseVideo();
-                    isPlaying = false;
-                    playButton.innerHTML = 'Play';
-                    flames.classList.remove('playing');
-                }
-            });
-        }
-
-        function onPlayerStateChange(event) {
-            if (event.data === YT.PlayerState.ENDED) {
+        playButton.addEventListener('click', function () {
+            if (!isPlaying) {
+                audio.play();
+                isPlaying = true;
+                playButton.innerHTML = 'Pause';
+                flames.classList.add('playing');
+            } else {
+                audio.pause();
                 isPlaying = false;
                 playButton.innerHTML = 'Play';
                 flames.classList.remove('playing');
             }
-        }
+        });
     </script>
 </body>
 </html>
