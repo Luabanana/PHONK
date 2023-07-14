@@ -4,24 +4,39 @@
     <title>PHONK</title>
     <style>
         body {
-            background-color: black;
+            background-color: #1f1f1f;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
             margin: 0;
-            color: white;
-            font-family: Arial, sans-serif;
+            color: #ffffff;
+            font-family: 'Courier New', monospace;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: 48px;
+            letter-spacing: 10px;
+            margin-bottom: 20px;
         }
 
         button {
-            background-color: transparent;
-            color: white;
-            border: 2px solid white;
+            background-color: #ffffff;
+            color: #000000;
+            border: none;
             padding: 10px 20px;
             font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 2px;
             cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #000000;
+            color: #ffffff;
         }
 
         #flames {
@@ -39,8 +54,8 @@
         .playing {
             opacity: 1;
         }
-        <script src="https://www.youtube.com/iframe_api"></script>
     </style>
+    <script src="https://www.youtube.com/iframe_api"></script>
 </head>
 <body>
     <h1>PHONK</h1>
@@ -89,6 +104,5 @@
             }
         }
     </script>
-    <script src="https://www.youtube.com/iframe_api"></script>
 </body>
 </html>
